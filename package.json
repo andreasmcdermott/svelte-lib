@@ -1,7 +1,23 @@
 {
 	"name": "svelte-lib",
 	"version": "0.0.1",
-	"author": "Andreas McDermott"
+	"author": "Andreas McDermott",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/andreasmcdermott/svelte-lib/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/andreasmcdermott/svelte-lib.git"
+	},
+	"svelte": "./index.js",
+	"keywords": [
+		"svelte",
+		"sveltekit",
+		"actions",
+		"library",
+		"stores"
+	],
 	"scripts": {
 		"dev": "vite dev",
 		"build": "svelte-kit sync && svelte-package",
