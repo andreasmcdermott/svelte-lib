@@ -43,12 +43,18 @@ class History<T> {
 
 type Maybe<T> = T | undefined;
 
+/**
+ * @example
+ * ```
+ * const store = undoable('', (set) => {}, { historySize: 50 });
+ * ```
+ */
 export function undoable<T>(
 	initialValue?: T,
 	start?: StartStopNotifier<Maybe<T>>,
 	options?: UndoableOptions
 ) {
-	const { historySize = 10 } = options || {};
+	const { historySize = 25 } = options || {};
 	const history = new History<Maybe<T>>(historySize, initialValue);
 	const { subscribe, set, update } = writable<Maybe<T>>(initialValue, start);
 	return {
