@@ -10,11 +10,13 @@
 	<div class="row">
 		<section>
 			<h2>writableLocalStorage</h2>
+			<p>Key: <strong>my-store</strong></p>
 			<input type="text" bind:value={$writableStore} />
 		</section>
 		<section>
 			<h2>readableLocalStorage</h2>
-			<div>{$readableStore}</div>
+			<p>Key: <strong>my-store</strong></p>
+			<p>Value: <strong>{$readableStore}</strong></p>
 		</section>
 		<section>
 			<h2>undoable</h2>
@@ -74,7 +76,7 @@
 	}
 
 	p {
-		margin: 0;
+		margin: 0.5rem 0;
 		padding: 0;
 	}
 
