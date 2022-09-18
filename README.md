@@ -29,6 +29,8 @@ Readable store that will automatically update when the local storage's value cha
 
 Writable store that supports undo and redo actions.
 
+[Demo](https://svelte.dev/repl/24f0928dd21341e79f8c3124b1187604?version=3.50.1)
+
 ```
 <script>
   import { undoable } from 'svelte-shared/store';
@@ -47,6 +49,8 @@ Add a keyboard shortcut to an element. Depending on the element, the shortcut wi
 
 - Button or link: click
 - Input, textarea, or any element with tabIndex set to a value other than -1: focus
+
+[Demo](https://svelte.dev/repl/24f0928dd21341e79f8c3124b1187604?version=3.50.1)
 
 ```
 <script>
