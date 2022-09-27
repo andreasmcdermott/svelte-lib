@@ -1,11 +1,11 @@
+import { browser } from '$app/environment';
 import { readable, writable, type StartStopNotifier, type Updater } from 'svelte/store';
 
-const isClient = typeof localStorage !== 'undefined';
 const listeners = new Set<(key: string | null, value: string | null) => void>();
 
 let initialized = false;
 const initialize = () => {
-	if (!initialized && isClient) {
+	if (!initialized && browser) {
 		initialized = true;
 		const _setItem = localStorage.setItem;
 		localStorage.setItem = (key: string, value: string) => {
@@ -16,7 +16,7 @@ const initialize = () => {
 };
 
 const save = <T>(key: string, value: T) => {
-	if (isClient) localStorage.setItem(key, JSON.stringify(value));
+	if (browser) localStorage.setItem(key, JSON.stringify(value));
 };
 
 const parse = (value: string | null) => {
@@ -37,17 +37,17 @@ const listen = (handler: (key: string | null, value: string | null) => void) => 
 		handler(event.key, event.newValue);
 	};
 
-	if (isClient) window.addEventListener('storage', listener);
+	if (browser) window.addEventListener('storage', listener);
 	listeners.add(handler);
 
 	return () => {
-		if (isClient) window.removeEventListener('storage', listener);
+		if (browser) window.removeEventListener('storage', listener);
 		listeners.delete(handler);
 	};
 };
 
 const load = (key: string) => {
-	if (!isClient) return null;
+	if (!browser) return null;
 	const raw = localStorage.getItem(key);
 	return parse(raw);
 };
